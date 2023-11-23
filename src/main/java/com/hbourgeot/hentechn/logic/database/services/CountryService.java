@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import com.hbourgeot.hentechn.logic.entities.Country;
 
-public interface ICountryService {
+public interface CountryService {
   long count();
 
   boolean existsById(Long id);

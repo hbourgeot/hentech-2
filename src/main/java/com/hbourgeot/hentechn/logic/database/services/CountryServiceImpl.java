@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.hbourgeot.hentechn.logic.database.model.ICountryRepo;
 import com.hbourgeot.hentechn.logic.entities.Country;
 
-public class CountryServiceImpl implements ICountryService {
+
+public class CountryServiceImpl implements CountryService {
 
   @Autowired
   private ICountryRepo repo;

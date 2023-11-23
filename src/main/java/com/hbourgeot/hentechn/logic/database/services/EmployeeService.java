@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import com.hbourgeot.hentechn.logic.entities.Employee;
 
-public interface IEmployeeService {
+public interface EmployeeService {
   long count();
 
   void delete(Employee entity);

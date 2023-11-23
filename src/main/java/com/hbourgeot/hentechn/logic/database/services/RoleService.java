@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import com.hbourgeot.hentechn.logic.entities.Role;
 
-public interface IRoleService {
+public interface RoleService {
   long count();
 
   boolean existsById(Long id);
