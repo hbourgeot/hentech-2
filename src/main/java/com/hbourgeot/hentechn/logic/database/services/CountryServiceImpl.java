@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.hbourgeot.hentechn.logic.database.model.ICountryRepo;
 import com.hbourgeot.hentechn.logic.entities.Country;
 
-
+@Service
 public class CountryServiceImpl implements CountryService {
 
   @Autowired
