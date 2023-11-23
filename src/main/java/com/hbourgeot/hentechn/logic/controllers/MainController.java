@@ -2,13 +2,20 @@ package com.hbourgeot.hentechn.logic.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hbourgeot.hentechn.infraestructure.config.ApiResponse;
+import com.hbourgeot.hentechn.infraestructure.config.ResponseHandler;
 import com.hbourgeot.hentechn.logic.database.services.CountryService;
+import com.hbourgeot.hentechn.logic.dto.CountryDTO;
 import com.hbourgeot.hentechn.logic.entities.Country;
 import com.hbourgeot.hentechn.logic.entities.Role;
+
+import jakarta.validation.Valid;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,8 +28,17 @@ public class MainController {
   private CountryService countryService;
 
   @PostMapping(value="country")
-  public Country createCountry(@RequestBody Country entity) {
-    return countryService.save(entity);
+  public ResponseEntity<ApiResponse> createCountry(@Valid @RequestBody CountryDTO entity) {
+    try {
+      Country country = new Country();
+      country.setId();
+      
+      countryService.save(entity);
+      return ResponseHandler.handleSuccess(country);
+    } catch (Exception e) {
+      return ResponseHandler.handleServerError(e, 500);
+    }
+
   }
 
   @GetMapping(value = "country")
