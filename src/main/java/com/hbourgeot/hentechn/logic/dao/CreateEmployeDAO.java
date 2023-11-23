@@ -1,6 +1,5 @@
 package com.hbourgeot.hentechn.logic.dao;
 
-import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
