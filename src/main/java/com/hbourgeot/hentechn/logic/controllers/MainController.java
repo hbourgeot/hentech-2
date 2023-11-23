@@ -31,9 +31,10 @@ public class MainController {
   public ResponseEntity<ApiResponse> createCountry(@Valid @RequestBody CountryDTO entity) {
     try {
       Country country = new Country();
-      country.setId();
+      country.setId(entity.getId());
+      country.setName(entity.getName());
       
-      countryService.save(entity);
+      countryService.save(country);
       return ResponseHandler.handleSuccess(country);
     } catch (Exception e) {
       return ResponseHandler.handleServerError(e, 500);
