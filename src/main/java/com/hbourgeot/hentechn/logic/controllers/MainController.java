@@ -43,8 +43,13 @@ public class MainController {
   }
 
   @GetMapping(value = "country")
-  public List<Country> getAllCountries() {
-    return (List<Country>) countryService.findAll();
+  public ResponseEntity<ApiResponse> getAllCountries() {
+    try{
+      List<Country> countries = (List<Country>) countryService.findAll();
+      return ResponseHandler.handleSuccess(countries);
+    } catch (Exception e) {
+      return ResponseHandler.handleServerError(e, 500);
+    }
   }
   
   @PostMapping(value="role")
